@@ -1,7 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import *
 from django.http import *
 from models import *
-from django.shortcuts import render
 
 # Create your views here.
 
@@ -20,8 +19,5 @@ def getAccount(request):
 	return render(request, 'main/account.html', ctx)
 
 def getAccountById(request, acc_id):
-	try:
-		acc = Account.objects.get(id=acc_id)
-	except Account.DoesNotExist:
-		raise Http404("Account does not exist")
+	acc = get_object_or_404(Account, pk=acc_id)
 	return render(request, 'main/details.html', {'account': acc})	
