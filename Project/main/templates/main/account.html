@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Account list</title>
+</head>
+<body>
+	{% if allAccounts %}
+	<h3>Here are all the accounts</h3>
+	<ul>
+		{% for acc in allAccounts %}
+			<li><a href="/account/{{ acc.id }}/">{{ acc.username }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<h2>No accounts to display</h2>
+	{% endif %}
+</body>
+</html>
