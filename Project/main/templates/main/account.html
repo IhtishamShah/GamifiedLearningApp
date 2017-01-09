@@ -1,9 +1,15 @@
+{% load render_bundle from webpack_loader %}
+
+
 <!DOCTYPE html>
-<html>
+<html>all
 <head>
 	<title>Account list</title>
 </head>
 <body>
+	<div id="container"></div>
+	{% render_bundle 'main' %}
+
 	{% if allAccounts %}
 	<h3>Here are all the accounts</h3>
 	<ul>
