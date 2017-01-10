@@ -1,0 +1,34 @@
+{
+	"Questions":[
+		{
+			"title" :"'میرا نام علی ہے' کا انگریزی میں درست جملہ چنیے",
+			"options" : ["Me is Ali", "My name is Ali", "Mine name is Ali", " My name are Ali"],
+			"correct" :  "My name is Ali"
+		},
+		{
+			"title" : "مناسب لفظ چُن کر جگہ پُر کيجيے: My Name ______  Ali",
+			"options" : ["am", "is", "is the", "has"],
+			"correct" :  "is"
+		},
+		{
+			"title" : "'میں علی ہوں' کا انگریزی میں ترجمہ منتخب کیجیے",
+			"options" : ["Myself Ali", "I am Ali", "I am a Ali", "I am the Ali"],
+			"correct" :  "I am Ali"
+		},
+		{
+			"title" : "'آپ کا کیا نام ہے؟' کا انگریزی میں ترجمہ منتخب کیجیے",
+			"options" : ["What is your name", "What is you're name", "What is yours name", "What is your good name"],
+			"correct" :  "What is your name"
+		},
+		{
+			"title" : "مناسب لفظ چُن کر خالی جگہ پُر کیجیے: What is _______ name?",
+			"options" : ["yours", "you", "your", "you're"],
+			"correct" :  "your"
+		},
+		{
+			"title" : "'آپ کا نام Zara ہے' کا انگریزی میں ترجمہ منتخب کیجیے",
+			"options" : ["Yours name is Zara", "Your name is Zara", "Her name is Zara", "Your name is the Zara"],
+			"correct" :  "Your name is Zara"
+		}		
+	]
+}

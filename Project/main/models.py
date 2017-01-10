@@ -7,6 +7,8 @@ from django.db import models
 class Account(models.Model):
 	id = models.AutoField(primary_key=True)
 	username = models.CharField(max_length=40, unique=True)
+	firstname = models.CharField(max_length=40, default="")
+	lastname = models.CharField(max_length=40, default="")
 	email = models.CharField(max_length=40)
 	password = models.CharField(max_length=40)
 
