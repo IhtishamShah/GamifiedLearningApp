@@ -6,10 +6,9 @@ urlpatterns = [
 	# /
 	url(r'^$', views.index, name="index"),
 
-	url(r'^account/$', views.getAccount, name="getAccount"),
+	url(r'^lesson/$', views.mainLesson, name="mainLesson"),
 
-	# /123
-	url(r'^account/(?P<acc_id>[0-9]+)/$', views.getAccountById, name="getAccountById"),
+	url(r'^quiz/$', views.mainQuiz, name="mainQuiz"),
 
 	url(r'^lesson/(?P<lesson_id>[0-9]+)/$', views.getLesson, name="getLesson"),
 

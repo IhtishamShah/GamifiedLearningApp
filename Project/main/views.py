@@ -12,20 +12,11 @@ from rest_framework import status
 def index(request):
 	return HttpResponse("<h1>Hello! (say it like Reinhardt)</h1>")
 
-def getAccount(request):
-	html = ''
+def mainLesson(request):
+	return render(request, 'main/lessons.html')
 
-	allAccounts = Account.objects.all()
-	
-	ctx = {
-		'allAccounts': allAccounts
-	}
-
-	return render(request, 'main/account.html', ctx)
-
-def getAccountById(request, acc_id):
-	acc = get_object_or_404(Account, pk=acc_id)
-	return render(request, 'main/details.html', {'account': acc})	
+def mainQuiz(request):
+	return render(request, 'main/quizzes.html')	
 
 @api_view(['GET', 'POST'])
 def getLesson(request, lesson_id):
