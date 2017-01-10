@@ -10,7 +10,14 @@ from rest_framework import status
 # Create your views here.
 
 def index(request):
-	return HttpResponse("<h1>Hello! (say it like Reinhardt)</h1>")
+	return render(request, 'main/index.html')
+
+@api_view(['POST'])
+def login(request):
+	if request.method == 'POST':
+		# u = request.POST.get("username")
+		# p = request.POST.get("password")
+		return HttpResponse("Hello")
 
 def mainLesson(request):
 	return render(request, 'main/lessons.html')
@@ -18,15 +25,14 @@ def mainLesson(request):
 def mainQuiz(request):
 	return render(request, 'main/quizzes.html')	
 
-@api_view(['GET', 'POST'])
-def getLesson(request, lesson_id):
-
-	if request.method == 'GET':
-		lesson = "/../lessons/lesson" + str(1) + ".json"
-		data = (open(os.path.dirname(__file__) + lesson).read())
-		return HttpResponse(data)
-
-def getQuiz(request, quiz_id):
-	quiz = "/../quizzes/quiz" + str(1) + ".json"
-	data = (open(os.path.dirname(__file__) + quiz).read())
+def lessonViews(request, lesson_id):
+	lesson = Lesson.objects.get(id=lesson_id).filepath
+	data = (open(os.path.dirname(__file__) + lesson).read())
 	return HttpResponse(data)
+
+@api_view(['GET', 'POST'])
+def quizViews(request, quiz_id):
+	if request.method == 'GET':
+		quiz = Lesson.objects.get(id=quiz_id).quizfilepath
+		data = (open(os.path.dirname(__file__) + quiz).read())
+		return HttpResponse(data)
