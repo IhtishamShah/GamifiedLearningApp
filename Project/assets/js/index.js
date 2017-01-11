@@ -3,26 +3,46 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'// require('./Quiz.js');
 import Quiz from './Quiz.js';
 import Lessons from './lessons.js';
-import {Row, Col} from 'elemental'
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import AppBar from 'material-ui/AppBar';
-// import './index.css';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
+import AppBar from 'material-ui/AppBar';
+// // import './index.css';
 
 
-
+// injectTapEventPlugin();
 class App extends Component{
   render(){
+  	const style ={
+  		option: {
+  			fontSize: "25px",
+  			margin: "5px",
+  			textDecoration: "none",
+  			color: "white",
+
+  		},
+  		container: {
+  			background: "#32C9E0",
+  		}
+  	}
 	return(
+		  <MuiThemeProvider>
+
 	  	<div>
-		<Row>
-		 
-			<Col sm="1/12"><Link to="/">Quizes</Link></Col>
-			<Col sm="1/12"><Link to="/lessons">Lessons</Link></Col>
-		</Row>
+	  	<AppBar showMenuIconButton={false}
+	  	title="E-Quiz"
+	  	/>
+	  	<div style={style.container}>
+	  	<Link style={style.option} to="/">Quiz</Link>
+		
+		<Link style={style.option} to="/lessons">Lesson</Link>
+		</div>
 		<div className="content">
 			{this.props.children}
 		</div>
 		</div>
+		</MuiThemeProvider>
+
 	  
 
 	)
@@ -42,3 +62,4 @@ class App extends Component{
   </Router>, 
   document.getElementById('container')
 )
+// ReactDOM.render(<App/>,)

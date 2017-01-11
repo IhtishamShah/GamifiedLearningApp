@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 let lesson = [
 	{
@@ -52,9 +55,11 @@ class Lessons extends Component{
 		
 		const l = lesson ? lesson[current] : null;
 		console.log("current lesson: ", l);
-
-		let prevButton = <button type="button" onClick={()=> this.iterateLesson(current-1)}>Previous</button>
-		let nextButton = <button type="button" onClick={()=> this.iterateLesson(current+1)}>Next</button>
+		const style = {
+			margin: "5px",
+		}
+		let prevButton = <RaisedButton style={style} onClick={()=> this.iterateLesson(current-1)}>Previous</RaisedButton>
+		let nextButton = <RaisedButton style={style} onClick={()=> this.iterateLesson(current+1)}>Next</RaisedButton>
 		let Menu = () =>
 				<div>
 				{prevButton}
@@ -73,9 +78,10 @@ class Lessons extends Component{
 
 
 		return(
-			<div>
+			<Card>
 				{(l
 				  ? <div>
+				  		<CardTitle title="Description"/>
 				  		<div>
 				 		{l.original.map((item)=>
 							<span style={{padding: '5px'}}>{item}</span>
@@ -92,7 +98,7 @@ class Lessons extends Component{
 				   : null
 
 				)}
-			</div>
+			</Card>
 		)
 
 	}

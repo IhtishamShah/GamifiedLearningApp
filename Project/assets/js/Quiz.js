@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
-
-
+// import ReactDOM from 'react-dom';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 // var ReactDOM = require('react-dom')
 
 
@@ -79,23 +79,23 @@ class Quiz extends Component {
 		// 	questions: q,
 		// 	correct: q.correct,
 		// })
-		fetch(`http://localhost:8000/quiz/1`)
-	    .then(response => response.json())
-	   	.then(result => {
-	   		this.setState({
-				questions: result.Questions,
-				current: 0,
-				correct: result.Questions[0].correct
-			})
-	   	});
+		// fetch(`http://localhost:8000/quiz/1`)
+	 //    .then(response => response.json())
+	 //   	.then(result => {
+	 //   		this.setState({
+		// 		questions: result.Questions,
+		// 		current: 0,
+		// 		correct: result.Questions[0].correct
+		// 	})
+	 //   	});
 
 	 //    .then(result => console.log(result.Questions));
 
-		// this.setState({
-		// 	questions: question,
-		// 	current: 0,
-		// 	correct: question[0].correct
-		// })
+		this.setState({
+			questions: question,
+			current: 0,
+			correct: question[0].correct
+		})
 	}
 
 
@@ -119,7 +119,7 @@ class Quiz extends Component {
 		var that = this;
 		setTimeout(function() {
            that.nextQuestion(current+1);
-        }, 3000);
+        }, 1000);
 
 
 	}
@@ -137,20 +137,26 @@ class Quiz extends Component {
 				{(q
 					? limit
 						? <span>Quiz ended Result {score}/{questions.length}</span>
-						:   <div className="row container">
-							<div className="col s12 m6">
-							<div class="card">
-            				<div class="card-content white-text">
+						:   <Card>
 							<form onSubmit={this.onOptionSubmit}>
-								<span className="card-title">{q.title}</span>
+								<CardTitle title={q.title}/>
+
+								<RadioButtonGroup onChange={this.onSelectOption} name="options" defaultSelected="not_light">
 								{q.options.map((option) =>
-									<label className="options">
-										<input type="radio" name="options" checked={this.state.optionSelected==option} onChange={this.onSelectOption} value={option}/>
-										{option}
-									</label>
+									<RadioButton
+								        value={option}
+								        label={option}		
+								        style={{marginLeft:"10px"}}						    
+								      />
+									// <label className="options">
+									// 	<input type="radio" name="options" checked={this.state.optionSelected==option} onChange={this.onSelectOption} value={option}/>
+									// 	{option}
+									// </label>
 								)}
-							<div className="card-action">
-								<button type="submit" >Answer</button>
+								    </RadioButtonGroup>
+
+								<CardActions>
+								<RaisedButton type="submit"> Answer </RaisedButton>
 								{( submitted 
 								? result
 									? <span>Correct!</span>
@@ -158,14 +164,12 @@ class Quiz extends Component {
 								  
 								: null
 								)}
-							</div>
+								</CardActions>
 
 							</form>
 							
-							</div>
-							</div>
-							</div>
-							</div>
+							
+							</Card>
 					: <span>Loading Quiz</span>
 				)}
 			</div>
