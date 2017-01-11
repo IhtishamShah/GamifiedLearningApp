@@ -35,6 +35,10 @@ class Lessons extends Component{
 	}
 
 	componentDidMount(){
+		fetch(`http://localhost:8000/lesson/1`)
+	    .then(response => response.json())
+	    .then(result => console.log(result));
+
 		this.setState({
 			lessons: lesson,
 			current: 0
@@ -94,5 +98,7 @@ class Lessons extends Component{
 	}
 }
 
-ReactDOM.render(<Lessons />, 
-	document.getElementById('container'))
+export default Lessons;
+
+// ReactDOM.render(<Lessons />, 
+// 	document.getElementById('container'))

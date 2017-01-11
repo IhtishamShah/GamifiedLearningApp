@@ -23,9 +23,10 @@ module.exports = {
         //tells webpack where to store data about your bundles.
         new BundleTracker({filename: './webpack-stats.json'}), 
         // new webpack.optimize.CommonsChunkPlugin('common.js'),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
-        new webpack.optimize.AggressiveMergingPlugin(),
+        // dasdasdasdsad
+        // new webpack.optimize.DedupePlugin(),
+        // new webpack.optimize.UglifyJsPlugin(),
+        // new webpack.optimize.AggressiveMergingPlugin(),
         //makes jQuery available in every module
         // new webpack.ProvidePlugin({ 
         //     $: 'jquery',
@@ -54,7 +55,9 @@ module.exports = {
                     //specify that we will be dealing with React code
                     presets: ['react',"es2015"] 
                 }
-            }
+            },
+            { test: /\.css$/, loader: "style-loader!css-loader" }
+
         ]
     },
     

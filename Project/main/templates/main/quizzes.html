@@ -1,9 +1,19 @@
+{% load render_bundle from webpack_loader %}
+
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Quizzes</title>
+<!-- 	<script src="../../assets/bundles/main.js"></script>		
+ -->
+	<!-- <link rel="stylesheet" href="{% static "main/assets/css/materialize.min.css" %}">
+	<link rel="stylesheet" href="{% static "main/assets/css/index.css" %}"> -->
 </head>
 <body>
+<div id="container"></div>
+	{% render_bundle 'main' %}
 
 </body>
 </html>

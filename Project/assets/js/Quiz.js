@@ -79,11 +79,23 @@ class Quiz extends Component {
 		// 	questions: q,
 		// 	correct: q.correct,
 		// })
-		this.setState({
-			questions: question,
-			current: 0,
-			correct: question[0].correct
-		})
+		fetch(`http://localhost:8000/quiz/1`)
+	    .then(response => response.json())
+	   	.then(result => {
+	   		this.setState({
+				questions: result.Questions,
+				current: 0,
+				correct: result.Questions[0].correct
+			})
+	   	});
+
+	 //    .then(result => console.log(result.Questions));
+
+		// this.setState({
+		// 	questions: question,
+		// 	current: 0,
+		// 	correct: question[0].correct
+		// })
 	}
 
 
@@ -125,24 +137,34 @@ class Quiz extends Component {
 				{(q
 					? limit
 						? <span>Quiz ended Result {score}/{questions.length}</span>
-						:   <div>
+						:   <div className="row container">
+							<div className="col s12 m6">
+							<div class="card">
+            				<div class="card-content white-text">
 							<form onSubmit={this.onOptionSubmit}>
-								<span>{q.title}</span>
+								<span className="card-title">{q.title}</span>
 								{q.options.map((option) =>
-									<label>
+									<label className="options">
 										<input type="radio" name="options" checked={this.state.optionSelected==option} onChange={this.onSelectOption} value={option}/>
 										{option}
 									</label>
 								)}
+							<div className="card-action">
 								<button type="submit" >Answer</button>
-							</form>
-							{( submitted 
+								{( submitted 
 								? result
 									? <span>Correct!</span>
 									: <span>Incorrect</span>
 								  
 								: null
-							)}
+								)}
+							</div>
+
+							</form>
+							
+							</div>
+							</div>
+							</div>
 							</div>
 					: <span>Loading Quiz</span>
 				)}
@@ -152,6 +174,7 @@ class Quiz extends Component {
 
 }
 
+export default Quiz;
 // const Question = ({onSubmit,onChange, onClick, list, submit}) => 
 // 	<form onSubmit={onSubmit}>
 // 		<span>{list.q}</span>
@@ -168,5 +191,5 @@ class Quiz extends Component {
 // 	</form>
 	
 
-ReactDOM.render(<Quiz />, 
-	document.getElementById('container'))
+// ReactDOM.render(<Quiz />, 
+// 	document.getElementById('container'))
