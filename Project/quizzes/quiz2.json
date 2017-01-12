@@ -1,0 +1,29 @@
+{
+	"Questions":[
+		{
+			"title" :"'ہیلو/سلام' ا انگریزی میں درست ترجمہ چُنیے",
+			"options" : ["Good night", "Hello", "How are you?", "Good morning"],
+			"correct" :  "Hello"
+		},
+		{
+			"title" : "'ہیلو! میں علی ہوں' کا انگریزی میں درست ترجمہ چنیے",
+			"options" : ["Hello! Myself Ali", "Hello! I is Ali", "Hello! I am Ali", "Hello! You are Ali"],
+			"correct" :  "Hello! I am Ali"
+		},
+		{
+			"title" : "مناسب لفظ چُن کر خالی جگہ پُر کیجیے: _________ up?",
+			"options" : ["What", "What're", "How's", "What's"],
+			"correct" :  "What's"
+		},
+		{
+			"title" : "'ٹھیک' کا انگریزی میں درست ترجمہ منتخب کیجۓ",
+			"options" : ["Faine", "Fine", "Not", "Sick"],
+			"correct" :  "Fine"
+		},
+		{
+			"title" : "مناسب لفظ استعمال کر کے خالی جگہ پُر کيجيے: You ______ fine",
+			"options" : ["are the", "are", "has", "is"],
+			"correct" :  "are"
+		}
+	]
+}

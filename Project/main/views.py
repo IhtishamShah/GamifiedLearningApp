@@ -10,15 +10,37 @@ from rest_framework import status
 # Create your views here.
 
 def index(request):
-	return render(request, 'main/index.html')
+	return render(request, 'main/test.html')
+
+def login(request):
+	if request.session.has_key("userid"):
+		return HttpResponseRedirect('/quiz')
+	return render(request, 'main/test.html')
 
 @api_view(['POST'])
-def login(request):
+def logincheck(request):
+	print request.session
+	if request.session.has_key("userid"):
+		return HttpResponseRedirect('/quiz')
 	if request.method == 'POST':
-		# u = request.POST.get("username")
-		# p = request.POST.get("password")
-		return HttpResponse("Hello")
+		u = request.POST.get("username")
+		p = request.POST.get("password")
+		x = Account.objects.get(username=u)
 
+		if (x.password == p):
+			request.session["userid"] = x.id
+			return HttpResponse("Hello " + x.firstname)
+		else:
+			return HttpResponse("Username and password do not match") 
+
+def logout(request):
+	u = Account.objects.get(id=request.session["userid"]).username
+	try:
+		del request.session['userid']
+	except:
+		pass
+	return HttpResponse("<h1>" + u + " logged out!</h1>")
+	
 def mainLesson(request):
 	return render(request, 'main/lessons.html')
 

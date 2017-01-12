@@ -2,7 +2,7 @@
 	"Questions":[
 		{
 			"title" :"'میرا نام علی ہے' کا انگریزی میں درست جملہ چنیے",
-			"options" : ["Me is Ali", "My name is Ali", "Mine name is Ali", " My name are Ali"],
+			"options" : ["Me is Ali", "My name is Ali", "Mine name is Ali", "My name are Ali"],
 			"correct" :  "My name is Ali"
 		},
 		{

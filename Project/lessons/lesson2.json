@@ -1,0 +1,25 @@
+{
+	"Description": "ہیلو، آپ کیسے ہیں؟ میں ٹھیک ہوں، وغیرہ بولنا سیکھۂے",
+	"Lesson": [
+		{
+			"original": ["Hello", "My", "name", "is", "Ali"],
+			"translated": ["ہیلو", "میرا", "نام", "ہے", "علی"]
+		},
+		{
+			"original": ["What's up!"],
+			"translated": ["کیا چل رہا ہے؟"]
+		},
+		{
+			"original": ["I am", "You are"],
+			"translated": ["میں ہوں", "آپ ہیں"]
+		},
+		{
+			"original": ["How are you?"],
+			"translated": ["آپ کیسے ہیں؟"]
+		},
+		{
+			"original": ["I am fine", "I am good"],
+			"translated": ["میں ٹھیک ہوں", "اچھا/اچھی ہوں میں"]
+		}
+	]
+}
