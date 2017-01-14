@@ -75,3 +75,17 @@ def leaderboardViews(request):
 				obj[username] += i.score
 
 		return HttpResponse(obj)
+
+	if request.method == 'POST':
+		lessonId = request.POST.get("lessonId")
+		score = request.POST.get("score")
+
+		acc = Account.objects.get(id=request.session["userid"])
+		lesson = Lesson.objects.get(id=lessonId)
+
+		lt = LessonTracker()
+
+		lt.account = acc
+		lt.lesson = lesson
+		lt.score = score
+		lt.save()
