@@ -19,6 +19,8 @@ urlpatterns = [
 	url(r'^lesson/(?P<lesson_id>[0-9]+)/$', views.lessonViews, name="lessonViews"),
 
 	url(r'^quiz/(?P<quiz_id>[0-9]+)/$', views.quizViews, name="quizViews"),
+
+	url(r'leaderboard/', views.leaderboardViews, name="quizViews")
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -60,3 +60,18 @@ def quizViews(request, quiz_id):
 		quiz = "/../quizzes/quiz" + str(quiz) + ".json"
 		data = (open(os.path.dirname(__file__) + quiz).read())
 		return HttpResponse(data)
+
+@api_view(['GET', 'POST'])
+def leaderboardViews(request):
+	if request.method == 'GET':
+		obj = {}
+		accounts = Account.objects.all()
+		for acc in accounts:
+			id = acc.id
+			user = acc.username
+			obj[username] = 0
+			l = LessonTracker.objects.filter(account=id)
+			for i in l:
+				obj[username] += i.score
+
+		return HttpResponse(obj)
