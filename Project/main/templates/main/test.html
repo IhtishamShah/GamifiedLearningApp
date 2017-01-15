@@ -5,24 +5,11 @@
 	{% load static %}
 
 	<script src="{%static "main/jquery-min.js" %}"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$("#bt").click(function(){
-			$.ajax({
-				type: 'POST',
-				url: "logincheck/",
-				success: pass,
-				data: {"username": $("#username").val(), "password": $("#password").val()}
-			})
-		})
-	})
-
-	function pass(data, status){
-		console.log(data)
-	}
-	</script>
+	<script type="text/javascript" src="{%static "main/test.js" %}"></script>
 </head>
+{% csrf_token %}
 <body>
+<div id="err" hidden><h1>Username and password do not match</h1></div>
 <input type="text" name="username" id="username">Username</input>
 <input type="text" name="password" id="password">Password</input>
 <button id="bt">Submit</button>
