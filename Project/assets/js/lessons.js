@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import { Step, Stepper, StepLabel,} from 'material-ui/Stepper';
 
 
 let lesson = [
@@ -24,81 +25,142 @@ class Lessons extends Component{
 		super(props);
 		this.state = {
 			lessons: null,
-			current: null
+			current: null,
+			completed: 0,
 		}
-		this.iterateLesson = this.iterateLesson.bind(this);
-		
+		this.iterateLesson = this.iterateLesson.bind(this);	
 	}
 
 
-	iterateLesson(index){
-		this.setState({
-			current: index
-		})
+	iterateLesson(iter){
+		const {completed, current} = this.state;
+		if(iter<current){
+			this.setState({
+			current: iter,
+			completed: completed-1
+			})
+		}
+		else{
+			this.setState({
+			current: iter,
+			completed: completed+1
+			})
+		}
+
+
+		
+
 	}
 
 	componentDidMount(){
 		fetch(`http://localhost:8000/lesson/1`)
 	    .then(response => response.json())
-	    .then(result => console.log(result));
-
-		this.setState({
-			lessons: lesson,
+	    .then(result => {
+	    	console.log("result", result.Lesson)
+	    	this.setState({
+			lessons: result.Lesson,
 			current: 0
-		})
+			})
+
+	    });
+
+		// this.setState({
+		// 	lessons: lesson,
+		// 	current: 0
+		// })
 	}
 
 	render(){
-		const {lessons, current} = this.state;
-		console.log("lesson: ", lesson);
+		const {lessons, current, completed} = this.state;
+		console.log("lesson: ", lessons);
 		console.log("current: ", current);
 		
-		const l = lesson ? lesson[current] : null;
+		const l = lessons ? lessons[current] : null;
 		console.log("current lesson: ", l);
+		let arr= []
+        if(lessons){
+			for(let i=1;i<=lessons.length;i++){
+				arr.push(i);
+
+			}
+        }
 		const style = {
 			margin: "5px",
 		}
 		let prevButton = <RaisedButton style={style} onClick={()=> this.iterateLesson(current-1)}>Previous</RaisedButton>
 		let nextButton = <RaisedButton style={style} onClick={()=> this.iterateLesson(current+1)}>Next</RaisedButton>
-		let Menu = () =>
-				<div>
-				{prevButton}
-				{nextButton}
-				</div>
-		let button = null;
-		if(current==0){
-			button = nextButton
-		}
-		else if ((current+1)==lesson.length){
-			button = prevButton
-		}
-		else{
-			button = <Menu />
-		}
+		// let Menu = () =>
+		// 		<div>
+		// 		{prevButton}
+		// 		{nextButton}
+		// 		</div>
+		// let button = null;
+		// if(current==0){
+		// 	button = nextButton
+		// }
+		// else if ((current+1)==lessons.length){
+		// 	button = prevButton
+		// }
+		// else{
+		// 	button = <Menu />
+		// }
 
 
 		return(
-			<Card>
+			<div>
+			 <div className="row">
+			<div className="col-md-6 col-md-offset-3">
+			<div className="questions">
+			<div className="row">
+
+				<div className="col-md-12">
+
+				<Stepper activeStep={completed}>
+				
+				{arr.map((item)=>
+					<Step>
+						<StepLabel></StepLabel>
+					</Step>
+				)}
+					
+		     
+				</Stepper>
+				</div>
+			</div>
 				{(l
 				  ? <div>
-				  		<CardTitle title="Description"/>
-				  		<div>
+				  		<h3>Description</h3>
+				  		<div className="row">
+						<div className="col-md-6 col-md-offset-3 lessons">
 				 		{l.original.map((item)=>
 							<span style={{padding: '5px'}}>{item}</span>
 				 		)}
 						</div>
-						<div>
+						</div>
+
+						<div className="row">
+						<div className="col-md-6 col-md-offset-3 lessons">
 				 		{l.translated.map((item)=>
 							<span style={{padding: '5px'}}>{item}</span>
 				 		)}
 				 		</div>
-				 		
-						{button}
+				 		</div>
+				 		<div className="row lesson-btn">
+				 		<div className="col-md-3 col-md-offset-3">
+						<RaisedButton disabled={current==0} onClick={()=> this.iterateLesson(current-1)}>Previous</RaisedButton>
+						</div>
+						<div className="col-md-3" >
+						<RaisedButton disabled={(current+1)==lessons.length} onClick={()=> this.iterateLesson(current+1)}>Next</RaisedButton>
+						</div>
+						</div>
 				 	</div>
 				   : null
 
 				)}
-			</Card>
+			</div>
+				</div>
+				</div>
+				</div>
 		)
 
 	}

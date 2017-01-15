@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'// require('./Quiz.js');
-import Quiz from './Quiz.js';
-import Lessons from './lessons.js';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import injectTapEventPlugin from 'react-tap-event-plugin';
+import {Tabs, Tab} from 'material-ui/Tabs';
+
+import Quiz from './Quiz.js';
+import Lessons from './lessons.js';
+// import TimerProgress from './timer.js'
+
+
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+
 import AppBar from 'material-ui/AppBar';
-// // import './index.css';
+import './animate.css'
+import './index.css';
 
 
-// injectTapEventPlugin();
+
 class App extends Component{
   render(){
   	const style ={
@@ -22,21 +32,26 @@ class App extends Component{
 
   		},
   		container: {
-  			background: "#32C9E0",
+  			background: "#992E2E",
   		}
   	}
 	return(
 		  <MuiThemeProvider>
-
+     
 	  	<div>
 	  	<AppBar showMenuIconButton={false}
 	  	title="E-Quiz"
 	  	/>
-	  	<div style={style.container}>
-	  	<Link style={style.option} to="/">Quiz</Link>
-		
-		<Link style={style.option} to="/lessons">Lesson</Link>
-		</div>
+      
+
+	  	<div style={style.container} >
+     
+      <Tabs onChange={this.changeTab} >
+	  	<Tab  label="Quiz" containerElement={<Link to="/"/>}/>
+      <Tab label="Lessons" containerElement={<Link to="/lessons"/>}/>
+    </Tabs>
+    </div>
+   
 		<div className="content">
 			{this.props.children}
 		</div>
