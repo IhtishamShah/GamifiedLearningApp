@@ -6,6 +6,7 @@ injectTapEventPlugin();
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Quiz from './Quiz.js';
 import Lessons from './lessons.js';
@@ -20,6 +21,14 @@ import './animate.css'
 import './index.css';
 
 
+const muiTheme = getMuiTheme({
+  fontFamily: 'Bitter, serif',
+  // appBar:{
+  //   background: "#34314c",
+  // },
+})
+
+
 
 class App extends Component{
   render(){
@@ -32,24 +41,25 @@ class App extends Component{
 
   		},
   		container: {
-  			background: "#992E2E",
+  			background: "#393460",
   		}
   	}
 	return(
-		  <MuiThemeProvider>
+		  <MuiThemeProvider muiTheme={muiTheme}>
      
 	  	<div>
-	  	<AppBar showMenuIconButton={false}
+	  	<AppBar style={{background: "#34314c",}} showMenuIconButton={false}
 	  	title="E-Quiz"
 	  	/>
       
 
-	  	<div style={style.container} >
+	  	<div  >
      
       <Tabs onChange={this.changeTab} >
-	  	<Tab  label="Quiz" containerElement={<Link to="/"/>}/>
-      <Tab label="Lessons" containerElement={<Link to="/lessons"/>}/>
+	  	<Tab style={style.container}  label="Quiz" containerElement={<Link to="/"/>}/>
+      <Tab style={style.container} label="Lessons" containerElement={<Link to="/lessons"/>}/>
     </Tabs>
+
     </div>
    
 		<div className="content">

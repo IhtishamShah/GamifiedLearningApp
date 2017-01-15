@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // import ReactDOM from 'react-dom';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -6,13 +7,13 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import LinearProgress from 'material-ui/LinearProgress';
 import  {Circle} from 'react-progressbar.js';
 import { Step, Stepper, StepLabel,} from 'material-ui/Stepper';
-
+import {slideInRight} from 'react-animations';
 import './flexboxgrid.min.css'
 // var ReactDOM = require('react-dom')
 
 let question = [
 	{
-		title: 'what dis?',
+		title: 'who dis?',
 		options: ['yes', 'no', 'brah'],
 		correct: 'yes'
 	},
@@ -37,7 +38,7 @@ class Quiz extends Component {
 			current: null,
 			limit:false,
 			score:0,
-			timerCount:1,
+			timerCount:0,
 			completed: 0,
 			// next: false,
 		}
@@ -55,7 +56,6 @@ class Quiz extends Component {
 		}
 		else{
 			this.setState({timerCount:this.state.timerCount+1})
-
 		}
 	}
 
@@ -88,7 +88,7 @@ class Quiz extends Component {
 				submitted: false,
 				limit: false,
 				completed: completed,
-				timerCount:1,
+				timerCount:0,
 			})	
 		}
 
@@ -101,15 +101,15 @@ class Quiz extends Component {
 		// 	questions: q,
 		// 	correct: q.correct,
 		// })
-		// fetch(`http://localhost:8000/quiz/1`)
-	 //    .then(response => response.json())
-	 //   	.then(result => {
-	 //   		this.setState({
-		// 		questions: result.Questions,
-		// 		current: 0,
-		// 		correct: result.Questions[0].correct
-		// 	})
-	 //   	});
+		fetch(`http://localhost:8000/quiz/1`)
+	    .then(response => response.json())
+	   	.then(result => { console.log(result);
+	  //  		this.setState({
+			// 	questions: result.Questions,
+			// 	current: 0,
+			// 	correct: result.Questions[0].correct
+			// })
+	   	});
 
 	 //    .then(result => console.log(result.Questions));
 		let time = setInterval(this.questionTimer,1000);
@@ -179,21 +179,25 @@ class Quiz extends Component {
             height: '75px',
             "font-size": "50px",
 			color: "#B03232",
+			animation: '0.7s zoomIn ease',
 
         };
-        
+		// var animation = {
+		// 	animation: "0.8s zoomIn ease";
+		// }        
         console.log("arr",arr);
 
 		return(
 			<div>
-			 <div className="row fadeInLeft">
+			
+			 <div className="row">
 			<div className="col-md-6 col-md-offset-3">
-			<div className="questions slideInRight">
-			<div className="row">
+			<div className="questions enterLeft">
+			<div className="row ">
 
-				<div className="col-md-12">
+				<div className="col-md-12 ">
 
-				<Stepper className="zoomInDown" activeStep={completed}>
+				<Stepper  activeStep={completed}>
 				
 				{arr.map((item)=>
 					<Step>
@@ -211,7 +215,14 @@ class Quiz extends Component {
 			</div>
 				{(q
 					? limit
-						? <span>Quiz ended Result {score}/{questions.length}</span>
+						? <div className="row center-md middle-md">
+							<div className="col-md-12">
+							<div className="total-score">
+							<h3>Quiz ended </h3>
+							<span>Result: {score}/{questions.length}</span>
+							</div>
+						  </div>
+						  </div>
 						:  
 							
 							<div>
@@ -233,8 +244,8 @@ class Quiz extends Component {
 								
 								<div className="col-md-3 col-md-offset-3" >
 								<div className="row top-md">
-									<div className="col-md-12">
-									<Circle className="timer"
+									<div className="col-md-12 timer">
+									<Circle
 						                progress={this.state.timerCount/30}
 						                text={this.state.timerCount}
 						                options={options}
@@ -242,6 +253,8 @@ class Quiz extends Component {
 						                containerStyle={containerStyle}
 						                containerClassName={'.progressbar'} />
 									</div>
+									</div>
+									<div className="row">
 									<div className="col-md-12">
 										{( submitted 
 										? result
@@ -251,6 +264,7 @@ class Quiz extends Component {
 										: null
 										)}
 									</div>
+
 								</div>
 								
 								</div>
@@ -271,6 +285,7 @@ class Quiz extends Component {
 				</div>
 				</div>
 				</div>
+				
 			</div>
 		)
 	}

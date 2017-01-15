@@ -2,6 +2,12 @@ body{
 	margin: 0;
 	padding: 0;
 	background: #BA2B2B;
+	
+
+}
+
+html {
+	font-family: 'Bitter', serif;
 }
 
 .row .questions{
@@ -21,8 +27,19 @@ form{
 }
 
 .lessons{
-	margin-bottom: 10px;
+	margin-bottom: 25px;
+	
+
 }
+
+.words{
+	background: #63C4BE;
+	border-radius: 2px;
+	padding: 5px;
+	margin-right:3px;
+	animation: 1s zoomIn ease;
+/*	margin-bottom: 5px;
+*/}
 
 .lesson-btn{
 	margin-top: 10px;
@@ -31,6 +48,32 @@ form{
 .questions h3{
 }
 
-.timer{
-	
+.enterRight{
+	animation: 0.7s slideInRight ease;
 }
+
+.enterLeft{
+	animation: 0.7s slideInLeft ease;
+}
+
+.new-question{
+	animation: 0.7s slideInLeft ease;
+}
+
+.timer{
+	animation: 0.7s zoomIn ease;
+}
+
+.result{
+	animation: 0.7s pulse ease;
+}
+
+.total-score{
+	animation: 0.8s zoomIn ease;
+	height: 40%;
+}
+
+
+
+
+

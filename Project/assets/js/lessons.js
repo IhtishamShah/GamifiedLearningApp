@@ -110,7 +110,7 @@ class Lessons extends Component{
 			<div>
 			 <div className="row">
 			<div className="col-md-6 col-md-offset-3">
-			<div className="questions">
+			<div className="questions enterRight">
 			<div className="row">
 
 				<div className="col-md-12">
@@ -133,7 +133,7 @@ class Lessons extends Component{
 				  		<div className="row">
 						<div className="col-md-6 col-md-offset-3 lessons">
 				 		{l.original.map((item)=>
-							<span style={{padding: '5px'}}>{item}</span>
+							<span className = "words">{item}</span>
 				 		)}
 						</div>
 						</div>
@@ -141,7 +141,7 @@ class Lessons extends Component{
 						<div className="row">
 						<div className="col-md-6 col-md-offset-3 lessons">
 				 		{l.translated.map((item)=>
-							<span style={{padding: '5px'}}>{item}</span>
+							<span className = "words" >{item}</span>
 				 		)}
 				 		</div>
 				 		</div>
