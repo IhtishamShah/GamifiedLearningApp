@@ -104,21 +104,21 @@ class Quiz extends Component {
 		fetch(`http://localhost:8000/quiz/1`)
 	    .then(response => response.json())
 	   	.then(result => { console.log(result);
-	  //  		this.setState({
-			// 	questions: result.Questions,
-			// 	current: 0,
-			// 	correct: result.Questions[0].correct
-			// })
+	   		this.setState({
+				questions: result.Questions,
+				current: 0,
+				correct: result.Questions[0].correct
+			})
 	   	});
 
 	 //    .then(result => console.log(result.Questions));
 		let time = setInterval(this.questionTimer,1000);
-		this.setState({
-			questions: question,
-			current: 0,
-			correct: question[0].correct,
-			time: time,
-		})
+		// this.setState({
+		// 	questions: question,
+		// 	current: 0,
+		// 	correct: question[0].correct,
+		// 	time: time,
+		// })
 	}
 
 

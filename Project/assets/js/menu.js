@@ -10,7 +10,7 @@ class Menu extends Component{
   render() {
     return (
       <div>
-        
+
         <Drawer>
           <MenuItem>Menu Item</MenuItem>
           <MenuItem>Menu Item 2</MenuItem>
