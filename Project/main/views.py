@@ -42,16 +42,16 @@ def logout(request):
 @api_view(['GET'])
 def lessonViews(request, lesson_id):
 	if request.method == 'GET':
-		# lesson = Lesson.objects.get(id=lesson_id).filepath
-		lesson = "/../lessons/lesson" + str(lesson_id) + ".json"
+		lesson = Lesson.objects.get(id=lesson_id).filepath
+		# lesson = "/../lessons/lesson" + str(lesson_id) + ".json"
 		data = (open(os.path.dirname(__file__) + lesson).read())
 		return HttpResponse(data)
 
 @api_view(['GET', 'POST'])
 def quizViews(request, quiz_id):
 	if request.method == 'GET':
-		# quiz = Lesson.objects.get(id=quiz_id).quizfilepath
-		quiz = "/../quizzes/quiz" + str(quiz) + ".json"
+		quiz = Lesson.objects.get(id=quiz_id).quizfilepath
+		# quiz = "/../quizzes/quiz" + str(quiz) + ".json"
 		data = (open(os.path.dirname(__file__) + quiz).read())
 		return HttpResponse(data)
 

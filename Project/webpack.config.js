@@ -24,9 +24,9 @@ module.exports = {
         new BundleTracker({filename: './webpack-stats.json'}), 
         // new webpack.optimize.CommonsChunkPlugin('common.js'),
         // dasdasdasdsad
-        // new webpack.optimize.DedupePlugin(),
-        // new webpack.optimize.UglifyJsPlugin(),
-        // new webpack.optimize.AggressiveMergingPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.AggressiveMergingPlugin(),
         //makes jQuery available in every module
         // new webpack.ProvidePlugin({ 
         //     $: 'jquery',

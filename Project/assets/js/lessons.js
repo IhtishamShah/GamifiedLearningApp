@@ -5,20 +5,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Step, Stepper, StepLabel,} from 'material-ui/Stepper';
 
 
-let lesson = [
-	{
-		original: ["my","name","is","genji"],
-		translated: ["maera", "naam","hay","need healing"]
-	},
-	{
-		original: ["who", "dis","vat", "dis"],
-		translated: ["kya", "ho", "raha", "hay"]
-	},
-	{
-		original: ["bro", "overwatc","bro", "overwatc"],
-		translated: ["khaem", "sta", "raha", "sta"]
-	}
-]
+// let lesson = [
+// 	{
+// 		original: ["my","name","is","genji"],
+// 		translated: ["maera", "naam","hay","need healing"]
+// 	},
+// 	{
+// 		original: ["who", "dis","vat", "dis"],
+// 		translated: ["kya", "ho", "raha", "hay"]
+// 	},
+// 	{
+// 		original: ["bro", "overwatc","bro", "overwatc"],
+// 		translated: ["khaem", "sta", "raha", "sta"]
+// 	}
+// ]
 
 class Lessons extends Component{
 	constructor(props){
@@ -87,8 +87,8 @@ class Lessons extends Component{
 		const style = {
 			margin: "5px",
 		}
-		let prevButton = <RaisedButton style={style} onClick={()=> this.iterateLesson(current-1)}>Previous</RaisedButton>
-		let nextButton = <RaisedButton style={style} onClick={()=> this.iterateLesson(current+1)}>Next</RaisedButton>
+		// let prevButton = <RaisedButton style={style} onClick={()=> this.iterateLesson(current-1)}>Previous</RaisedButton>
+		// let nextButton = <RaisedButton style={style} onClick={()=> this.iterateLesson(current+1)}>Next</RaisedButton>
 		// let Menu = () =>
 		// 		<div>
 		// 		{prevButton}
@@ -147,10 +147,10 @@ class Lessons extends Component{
 				 		</div>
 				 		<div className="row lesson-btn">
 				 		<div className="col-md-3 col-md-offset-3">
-						<RaisedButton disabled={current==0} onClick={()=> this.iterateLesson(current-1)}>Previous</RaisedButton>
+						<RaisedButton labelColor="#FFFFFF" backgroundColor="#ffc952" disabled={current==0} onClick={()=> this.iterateLesson(current-1)}>Previous</RaisedButton>
 						</div>
 						<div className="col-md-3" >
-						<RaisedButton disabled={(current+1)==lessons.length} onClick={()=> this.iterateLesson(current+1)}>Next</RaisedButton>
+						<RaisedButton labelColor="#FFFFFF" backgroundColor="#ffc952" disabled={(current+1)==lessons.length} onClick={()=> this.iterateLesson(current+1)}>Next</RaisedButton>
 						</div>
 						</div>
 				 	</div>

@@ -23,8 +23,9 @@ import './index.css';
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Bitter, serif',
-  // appBar:{
-  //   background: "#34314c",
+  // inkBar:{
+  //   background: "#ffc952",
+  //   wdith: "50px",
   // },
 })
 
@@ -55,7 +56,7 @@ class App extends Component{
 
 	  	<div  >
      
-      <Tabs onChange={this.changeTab} >
+      <Tabs  inkBarStyle={{backgroundColor:"#ffc952"}} onChange={this.changeTab} >
 	  	<Tab style={style.container}  label="Quiz" containerElement={<Link to="/"/>}/>
       <Tab style={style.container} label="Lessons" containerElement={<Link to="/lessons"/>}/>
     </Tabs>

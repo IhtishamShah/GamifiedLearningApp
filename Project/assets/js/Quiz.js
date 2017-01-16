@@ -13,14 +13,14 @@ import './flexboxgrid.min.css'
 
 let question = [
 	{
-		title: 'who dis?',
-		options: ['yes', 'no', 'brah'],
+		title: 'Select the best possible option',
+		options: ['yes', 'no', 'maybe'],
 		correct: 'yes'
 	},
 	{
-		title: 'what dis who dis?',
-		options: ['high', 'noon', 'need healing'],
-		correct: 'noon'
+		title: 'Which one of these is correct?',
+		options: ['one', 'two', 'three'],
+		correct: 'two'
 	}
 ]
 
@@ -271,7 +271,7 @@ class Quiz extends Component {
 								</div>
 								<div className="row">
 								<div className="col-md-4 col-md-offset-4">
-								<RaisedButton backgroundColor="#83EAEC" style={{ width: "100%","margin-top": "30px",}} type="submit"> Answer </RaisedButton>
+								<RaisedButton backgroundColor="#ffc952" style={{ width: "100%","margin-top": "30px",}} type="submit"> Answer </RaisedButton>
 								</div>
 								</div>
 
